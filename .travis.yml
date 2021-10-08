@@ -23,14 +23,6 @@ matrix:
       language: python
       python: 3.6
       env:
-        - MB_PYTHON_VERSION=3.6
-        - PLAT=x86_64
-
-    - os: linux
-      dist: xenial
-      language: python
-      python: 3.6
-      env:
         - MB_PYTHON_VERSION=3.7
         - PLAT=x86_64
 
@@ -49,17 +41,6 @@ matrix:
       env:
         - MB_PYTHON_VERSION=3.9
         - PLAT=x86_64
-
-    - os: linux
-      arch: arm64
-      dist: xenial
-      language: python
-      python: 3.6
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - PLAT=aarch64
-        - MB_ML_VER=2014
-        - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
 
     - os: linux
       dist: xenial
@@ -93,12 +74,6 @@ matrix:
         - PLAT=aarch64
         - MB_ML_VER=2014
         - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
-
-    - os: osx
-      env:
-        - MB_PYTHON_VERSION=3.6.8
-        - MB_PYTHON_OSX_VER=10.6
-        - MACOSX_DEPLOYMENT_TARGET=10.6
 
     - os: osx
       env:

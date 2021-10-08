@@ -17,10 +17,6 @@ environment:
     WHEEL_BUILD_DEP: "wheel"
 
   matrix:
-    - PYTHON: "C:\\Python36"
-
-    - PYTHON: "C:\\Python36-x64"
-
     - PYTHON: "C:\\Python37"
 
     - PYTHON: "C:\\Python37-x64"
