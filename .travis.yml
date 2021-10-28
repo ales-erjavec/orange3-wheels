@@ -97,7 +97,11 @@ cache:
   pip: true
   directories:
     - ~/Library/Caches/pip
-
+    
+addons:
+  apt:
+    packages:
+      - openssl
 
 before_install:
   - source multibuild/common_utils.sh
