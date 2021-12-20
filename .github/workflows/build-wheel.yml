@@ -1,0 +1,73 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    env:
+      GIT_REPO: https://github.com/biolab/orange3.git
+      REPO_DIR: orange3
+      BUILD_BRANCH: master
+      BUILD_COMMIT: 3.31.0
+
+    strategy:
+      matrix:
+        include:
+          # Linux x86_64
+          - os: ubuntu-20.04
+            ciwb-build: "cp{37,38,39}-manylinux_x86_64"
+            ciwb-archs: "x86_64"
+
+          # Linux aarch64
+          - os: ubuntu-20.04
+            ciwb-build: "cp{37,38,39}-manylinux_aarch64"
+            ciwb-archs: "aarch64"
+
+          # macOS
+          - os: macos-10.15
+            ciwb-build: "cp{37,38,39}-macosx_x86_64"
+            ciwb-archs: "x86_64"
+
+          # Windows
+          - os: windows-2019
+            ciwb-build: "cp{37,38,39}-{win32,win_amd64}"
+            ciwb-archs: "auto"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up QEMU
+        if: runner.os == 'Linux'
+        uses: docker/setup-qemu-action@v1
+        with:
+          platforms: arm64
+
+      - name: Checkout Orange
+        shell: bash
+        run: |
+          git clone ${GIT_REPO} ${REPO_DIR}
+          cd ${REPO_DIR}
+          git fetch origin ${BUILD_BRANCH}
+          git checkout ${BUILD_COMMIT}
+
+      # Used to host cibuildwheel
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install cibuildwheel
+        run: python -m pip install cibuildwheel==2.3.1
+
+      - name: Build wheels
+        shell: bash
+        env:
+          CIBW_BUILD: ${{ matrix.ciwb-build }}
+          CIBW_ARCHS: ${{ matrix.ciwb-archs }}
+        run: python -m cibuildwheel --output-dir wheelhouse  ${REPO_DIR}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: orange3-wheels
+          path: ./wheelhouse/*.whl
