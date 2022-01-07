@@ -9,8 +9,8 @@ jobs:
     env:
       GIT_REPO: https://github.com/biolab/orange3.git
       REPO_DIR: orange3
-      BUILD_BRANCH: master
-      BUILD_COMMIT: 3.31.0
+      BUILD_BRANCH: stable
+      BUILD_COMMIT: 3.31.1
 
     strategy:
       matrix:
