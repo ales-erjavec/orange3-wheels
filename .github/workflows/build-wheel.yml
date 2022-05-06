@@ -17,22 +17,22 @@ jobs:
         include:
           # Linux x86_64
           - os: ubuntu-20.04
-            ciwb-build: "cp{37,38,39}-manylinux_x86_64"
+            ciwb-build: "cp{37,38,39,310}-manylinux_x86_64"
             ciwb-archs: "x86_64"
 
           # Linux aarch64
           - os: ubuntu-20.04
-            ciwb-build: "cp{37,38,39}-manylinux_aarch64"
+            ciwb-build: "cp{37,38,39,310}-manylinux_aarch64"
             ciwb-archs: "aarch64"
 
           # macOS
           - os: macos-10.15
-            ciwb-build: "cp{37,38,39}-macosx_x86_64"
+            ciwb-build: "cp{37,38,39,310}-macosx_x86_64"
             ciwb-archs: "x86_64"
 
           # Windows
           - os: windows-2019
-            ciwb-build: "cp{37,38,39}-{win32,win_amd64}"
+            ciwb-build: "cp{37,38,39,310}-{win32,win_amd64}"
             ciwb-archs: "auto"
 
     steps:
