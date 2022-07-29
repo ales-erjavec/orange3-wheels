@@ -30,6 +30,11 @@ jobs:
             ciwb-build: "cp{37,38,39,310}-macosx_x86_64"
             ciwb-archs: "x86_64"
 
+          # macOS
+          - os: macos-11
+            ciwb-build: "cp{39,310}-macosx_universal2"
+            ciwb-archs: "universal2"
+
           # Windows
           - os: windows-2019
             ciwb-build: "cp{37,38,39,310}-{win32,win_amd64}"
