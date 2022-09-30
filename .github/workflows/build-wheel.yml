@@ -10,7 +10,7 @@ jobs:
       GIT_REPO: https://github.com/biolab/orange3.git
       REPO_DIR: orange3
       BUILD_BRANCH: stable
-      BUILD_COMMIT: 3.32.0
+      BUILD_COMMIT: 3.33.0
 
     strategy:
       matrix:
