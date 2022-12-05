@@ -4,9 +4,9 @@
 
 The Windows, macOS and manylinux wheels are build on Github Actions.
 
-To make/build a new release, edit the .github/workflows/buils-wheel.yml file and
+To make/build a new release, edit the .github/workflows/build-wheel.yml file and
 change the `BUILD_COMMIT` version to the appropriate tag/ref in the orange3
-git repository. Commit the changes and push the this repo (or create a pull
+git repository. Commit the changes and push to this repo (or create a pull
 request and have someone merge it).
 
 The wheels are stored as build artefacts.
